@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:widget_sample/second_page.dart';
 
 class FirstPage extends StatelessWidget {
-  final TextEditingController textEditingController = TextEditingController();
+  // final TextEditingController textEditingController = TextEditingController();
+  final List<String> entries = <String>['A', 'aaa', 'C'];
+  final List<int> colorCodes = <int>[600, 500, 100];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("HelloFirstPage"),
+          title: const Text("Hello List View"),
           backgroundColor: Colors.grey,
           centerTitle: true,
           actions: <Widget>[
@@ -17,35 +18,16 @@ class FirstPage extends StatelessWidget {
             ),
           ],
         ),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
-                TextField(
-                  controller: textEditingController,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter text',
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    String inputText = textEditingController.text;
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SecondPage(text: inputText),
-                        ),
-                    );
-                  },
-                  child: const Text('次の画面へ'),
-                ),
-              ],
-            ),
-          ),
-        )
+      body: ListView.builder(
+        itemCount: entries.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            height: 50,
+            color: Colors.amber[colorCodes[index]],
+            child: Center(child: Text('Entry ${entries[index]}'),),
+          );
+        },
+      )
     );
   }
 }

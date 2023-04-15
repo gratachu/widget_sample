@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SecondPage extends StatelessWidget {
-  final String text;
-
-  SecondPage({required this.text});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +20,7 @@ class SecondPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('images/momo.jpeg'),
-              Text(text),
+              // Text(text),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
